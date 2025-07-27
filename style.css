@@ -1,9 +1,16 @@
 * {
     margin: 0;
     pad: 0;
+    font-family: 'Roboto', 'Segoe UI', 'Inter', sans-serif;
 }
 
 body {
     background-color: #FFD801;
 
+}
+
+#main {
+    background-color: #3E424B;
+
+    
 }
