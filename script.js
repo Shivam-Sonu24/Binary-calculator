@@ -14,6 +14,38 @@ function updateDisplay(val) {
     result.textContent = val || '0';
 }
 
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    // Allow only binary digits 0,1
+    if (key === '0' || key === '1') {
+        current += key;
+        updateDisplay(current);
+    }
+
+    // Allow operators +, -, *, /
+    else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        setOperator(key);
+    }
+
+    // Enter or = key to calculate result
+    else if (key === 'Enter' || key === '=') {
+        calculate();
+    }
+
+    // Backspace to remove last digit
+    else if (key === 'Backspace') {
+        current = current.slice(0, -1);
+        updateDisplay(current || "");
+    }
+
+    // Escape or C key to clear all
+    else if (key.toLowerCase() === 'c' || key === 'Escape') {
+        clearAll();
+    }
+});
+
+
 function appendNum(num) {
     if (justCalculated) {
         current = '';
@@ -26,17 +58,20 @@ function appendNum(num) {
 }
 
 function setOperator(op) {
-    if (current === '') return;
-    if (operand && operator && current) {
+    if (current === "") return;
+
+    if (op === '×') op = '*';
+    if (op === '÷') op = '/';
+
+    if (operand !== "") {
         calculate();
-        operand = current;
-        current = '';
-    } else {
-        operand = current;
-        current = '';
     }
+
     operator = op;
+    operand = current;
+    current = "";
 }
+
 
 function calculate() {
     if (!operator || current === '' || operand === '') return;
