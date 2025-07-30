@@ -1,104 +1,119 @@
+/* Reset and base styles */
 * {
     margin: 0;
-    pad: 0;
-    font-family: 'Roboto', 'Segoe UI', 'Inter', sans-serif;
-}
-
-body {
-    background-color: #FFD801;
-
-}
-
-#main {
-    background-color: #3E424B;
-
-
-}
-
-body {
-    background: #f5f6fa;
-    font-family: Arial, sans-serif;
-    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', 'Inter', sans-serif;
 }
 
+/* Body background */
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+/* Main container */
 #main {
-    max-width: 350px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    padding: 24px 16px;
+    width: 340px;
+    background: #ffffffcc;
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Result display */
 #result {
     width: 100%;
-    min-height: 40px;
-    background: #e1e7ef;
-    border-radius: 6px;
-    margin-bottom: 18px;
-    font-size: 1.5em;
+    min-height: 50px;
+    background: #f0f5fa;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
     text-align: right;
-    padding: 10px;
-    box-sizing: border-box;
-    color: #222;
+    padding: 12px;
+    color: #2d3436;
     letter-spacing: 2px;
+    overflow-x: auto;
 }
 
+/* Buttons grid */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 14px;
     width: 100%;
 }
 
+/* Shared button style */
 .button,
 .Sbutton,
 .Cbutton {
-    background: #4078c0;
+    background: #4a69bd;
     color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     font-size: 1.2em;
-    padding: 16px 0;
-    cursor: pointer;
-    transition: background 0.2s;
+    padding: 18px 0;
     text-align: center;
-    user-select: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(74, 105, 189, 0.2);
 }
 
+/* Special operations */
 .Sbutton {
-    background: #2ecc71;
+    background: #38ada9;
 }
 
 .Cbutton {
-    background: #e74c3c;
+    background: #e55039;
     grid-column: span 2;
 }
 
+/* Hover effect */
 .button:hover,
 .Sbutton:hover,
 .Cbutton:hover {
-    background: #34495e;
+    transform: scale(1.06);
+    filter: brightness(1.15);
 }
 
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive tweaks */
 @media (max-width: 500px) {
     #main {
-        max-width: 98vw;
-        padding: 12px 4px;
-    }
-
-    .buttons {
-        gap: 8px;
+        width: 90vw;
+        padding: 16px;
     }
 
     .button,
     .Sbutton,
     .Cbutton {
         font-size: 1em;
-        padding: 12px 0;
+        padding: 14px 0;
     }
+}
+
+#btnDel {
+    background: #f39c12; /* Orange tone */
 }
