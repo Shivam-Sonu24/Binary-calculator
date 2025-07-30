@@ -4,6 +4,12 @@ let operator = '';
 let operand = '';
 let justCalculated = false;
 
+document.getElementById("btnDel").onclick = () => {
+    current = current.slice(0, -1); // remove last character
+    updateDisplay(current || "");   // show empty if all deleted
+};
+
+
 function updateDisplay(val) {
     result.textContent = val || '0';
 }
